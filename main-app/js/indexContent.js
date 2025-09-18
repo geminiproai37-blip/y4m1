@@ -12,8 +12,8 @@ const indexHtmlContent = `
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="css/styles.css" as="style" />
-    <link rel="stylesheet" href="css/styles.css" media="all" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/css/styles.css" as="style" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/css/styles.css" media="all" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -154,15 +154,15 @@ const indexHtmlContent = `
     </template>
 
 
-    <script type="module" src="./js/script.js"></script>
-    <script type="module" src="./js/home.js"></script>
-    <script src="./js/series.js" defer></script>
-    <script type="module" src="./js/adultContent.js"></script>
-    <script type="module" src="./js/configuracion.js"></script>
-    <script type="module" src="./js/aboutAndDMCA.js"></script>
-    <script type="module" src="./js/buscador.js"></script>
-    <script type="module" src="./js/config.js"></script>
-    <script type="module" src="./js/favoritos.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/./js/script.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/./js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/./js/series.js" defer></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/./js/adultContent.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/./js/configuracion.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/./js/aboutAndDMCA.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/./js/buscador.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/./js/config.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@latest/main-app/./js/favoritos.js"></script>
 
     <template id="peliculas-template">
       <section id="movies-section" class="py-8 px-4">
@@ -294,3 +294,4 @@ const indexHtmlContent = `
 `;
 
 export default indexHtmlContent;
+
