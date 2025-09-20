@@ -13,7 +13,7 @@ const indexHtmlContent = `
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="http://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@main/css/styles.css" as="style" />
-    <link rel="stylesheet" href="css/styles.css" media="all" />
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/gh/geminiproai37-blip/y4m1@main/css/styles.css" media="all" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -294,4 +294,5 @@ const indexHtmlContent = `
 `;
 
 export default indexHtmlContent;
+
 
