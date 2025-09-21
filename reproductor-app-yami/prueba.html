@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cargando...</title>
+    <style>
+        /* Basic styles for the loading message */
+        body {
+            background-color: #111827; /* Corresponds to bg-gray-900 */
+            color: #f9fafb; /* Corresponds to text-white */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <p>Cargando reproductor...</p>
+
+    <script type="module">
+        // The entire HTML content of the video player is stored in this string.
+        const indexHtmlContent = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Reproductor de Video</title>
+
+  <!-- Estilos básicos -->
+  <style>
+    body {
+      background-color: #111827; /* bg-gray-900 */
+      color: #f9fafb; /* text-white */
+      margin: 0;
+      font-family: sans-serif;
+    }
+    #player-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+  </style>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  </noscript>
+
+  <!-- Iconos -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Estilo del reproductor -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="player-container">
+    <p>Cargando reproductor...</p>
+  </div>
+
+  <!-- Configuración global del reproductor -->
+  <script type="module">
+    // Función para obtener parámetros de URL
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+      var results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    // Configuración del contenido
+    window.contentConfig = {
+      type: "tv",
+      title: "Título de la Serie/Película",
+      chapterName: "Nombre del Capítulo",
+      seriesName: "Nombre de la Serie",
+      posterUrl: "https://image.tmdb.org/t/p/original/j2oX7UeZJJD6tUczrVECcJCdLaG.jpg",
+      reportPosterUrl: "https://image.tmdb.org/t/p/original/31hNuaJXTLdqCJnC2VQatWROSrg.jpg",
+      synopsis: "Sinopsis del contenido.",
+      season: "1",
+      episode: "1",
+      nextChapterUrl: "go:next",
+      prevChapterUrl: "go:preview",
+      showPrevChapterButton: true,
+      introStartTime: "01:59",
+      introEndTime: "02:20",
+      endingStartTime: "22:00",
+      goBackId: getUrlParameter("id") || "165405",
+      backUrl: "https://www.google.com"
+    };
+
+    // Base de datos de servidores por idioma
+    window.languageServers = {
+      jp: [
+        { name: "Server HLS (JP)", url: "https://nika.playmudos.com/naruto/eURyOWJvUHZuN29RWm1WeExpaHhRZz09.m3u8", hls: true },
+        { name: "Server MP4 (JP)", url: "https://drive.google.com/file/d/1jtCl3nXJeM2ipmI-6y4kozDZw0KIfN-f/view", gdrive: true }
+      ],
+      en: [
+        { name: "Main Server (EN)", url: "https://ia800902.us.archive.org/23/items/2067-1-dub/2067_1_DUB.mp4", mp4: true },
+        { name: "Backup Server (EN)", url: "https://disk.yandex.com/i/QSIOoxLJs_nYJQ", yandex: true }
+      ],
+      es: [
+        { name: "Servidor de Prueba (ES)", url: "https://mega.nz/embed/ZQRTgR5S#Lx6PP5SVgTXsP91Tx5sYJw8UUvUnpXS8dmTcApKmxDQ", mp4: false },
+        { name: "Servidor HLS (ES)", url: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8", hls: true },
+        { name: "Servidor Google Drive (ES)", url: "https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_FILE_ID/view", gdrive: true },
+        { name: "Servidor Yandex (ES)", url: "https://disk.yandex.com/i/YOUR_YANDEX_SHARE_LINK", yandex: true }
+      ]
+    };
+
+    // Servidores de descarga
+    window.downloadServers = {
+      es: [
+        { name: "Descarga Directa (MP4)", url: "https://dn720402.ca.archive.org/0/items/kaisen-1-12-latino/01.mp4", type: "mp4" },
+        { name: "Descarga Externa (MEGA)", url: "https://mega.nz/file/example", type: "external" }
+      ],
+      en: [
+        { name: "Direct Download (MP4)", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", type: "mp4" },
+        { name: "External Download (Drive)", url: "https://drive.google.com/file/example", type: "external" }
+      ]
+    };
+
+    // Clave de API de Google (ejemplo)
+    window.GOOGLE_API_KEY = "AIzaSyA7v5KhMnwDwoFSGda7q8jrk0lkPhBUtoo";
+
+    // Insertar contenido del reproductor en el contenedor
+    const container = document.getElementById("player-container");
+    container.innerHTML = `
+      <div id="vertical-menu-container" class="vertical-menu-container"></div>
+      <div id="side-menu-buttons"></div>
+      <video id="player" controls width="100%" poster="${window.contentConfig.posterUrl}">
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+      </video>
+
+      <!-- Modal de reporte -->
+      <div id="report-confirmation-modal" class="popup hidden">
+        <div class="popup-header">
+          <h3>Reporte Enviado</h3>
+          <button class="close-popup-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="popup-content report-confirmation-content">
+          <img src="https://i.pinimg.com/originals/f2/1f/0a/f21f0a529006c607222141022020812f.gif" alt="Reporte Enviado" class="report-confirmation-gif"/>
+          <p>¡Gracias por tu reporte! Lo revisaremos pronto.</p>
+          <button id="report-confirmation-ok-btn" class="btn-primary">Aceptar</button>
+        </div>
+      </div>
+    `;
+   <\/script>
+
+  <!-- Librerías externas -->
+  <script src="https://vjs.zencdn.net/8.10.0/video.min.js" defer> <\/script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest" defer> <\/script>
+
+  <!-- Scripts del reproductor -->
+  <script type="module" src="dom_builder.js" defer></script>
+  <script type="module" src="external_handler.js" defer></script>
+  <script type="module" src="continueWatchingModal.js" defer></script>
+  <script type="module" src="anime_loader.js" defer></script>
+  <script type="module" src="script.js" defer></script>
+</body>
+</html>
+
+`;
+
+        // Inyectar el HTML
+        // Esto reemplaza por completo el contenido del documento actual.
+        document.open();
+        document.write(indexHtmlContent);
+        document.close();
+    </script>
+</body>
+</html>
